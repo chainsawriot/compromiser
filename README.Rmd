@@ -1,0 +1,94 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+devtools::load_all()
+```
+
+# compromiser
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of compromiser is to make the elegant [compromise](https://compromise.cool/) javascript library available to R. So, what is `compromise`? Self-described as "modest natural language processing", `compromise` is an extremely lightweight, easy-to-use, rule-based NLP library for English. As of writing, the entire library is 200kB (smaller than a typical animated gif file). The library is optimized for speed and "accurate enough".
+
+Similar to the original `compromise`, compromiser is optimized for speed and easy to use. You may know [spacyr](https://github.com/quanteda/spacyr). The current package is modeled after spacyr, but with speed, out-of-the-box experience and "enough" accuracy. Similar to spacyr, all output formats are [tif](https://github.com/ropensci/tif)-compatible.
+
+Caveats:
+
+* At the moment `compromiser` does POS tagging only
+* English only.
+* It won't keep punctuations
+* It is only accurate enough for most applications. Don't expect state-of-the-art performance.
+
+## Installation
+
+``` r
+devtools::install_github("chainsawriot/compromiser")
+```
+
+## Example
+
+Unlike spacyr, udpipe, or openNLP, no post-installation setup is required for compromiser. You can directly go POS parsing a small corpus. 
+
+```r
+library(compromiser)
+```
+
+
+```{r}
+textdata <- c("The dog has been selectively bred over millennia for various
+ behaviors, sensory capabilities, and physical attributes. Dog breeds vary
+ widely in shape, size, and color. They perform many roles for humans, such
+ as hunting, herding, pulling loads, protection, assisting police and the
+ military, companionship, therapy, and aiding disabled people. This influence
+ on human society has given them the sobriquet of \"man's best friend.\"",
+ "A methane gas explosion and fire in a Siberian coal mine left more than
+ 50 miners and rescuers dead. Another 239 people were rescued.")
+
+x <- tag(textdata)
+x
+```
+
+It gets the job done. Some tricky word are tagged incorrectly, though. (e.g. breeds, mine)
+
+```{r}
+as.data.frame(x)
+```
+
+# Integration with quanteda
+
+```r
+library(quanteda)
+```
+
+```{r, echo = FALSE, message = FALSE}
+library(quanteda)
+```
+
+Conversion to Quanteda's tokens.
+
+```{r}
+x_toks <- as.tokens(x)
+x_toks
+```
+
+Suppose you are only interested in nouns and adjectives.
+
+```{r}
+tokens_select(x_toks, pattern = c("*/N*", "*/JJ"))
+```
+
+# Integration with tidytext
+
+I don't care.
+
