@@ -13,10 +13,10 @@ R. So, what is `compromise`? Self-described as “modest natural language
 processing”, `compromise` is an extremely lightweight, easy-to-use,
 rule-based NLP library for English. As of writing, the entire library is
 200kB (smaller than a typical animated gif file). The library is
-optimized for speed and “accurate enough”.
+optimized for speed and being “accurate enough”.
 
 Similar to the original `compromise`, compromiser is optimized for speed
-and easy to use. You may know
+and ease of use. You may know
 [spacyr](https://github.com/quanteda/spacyr). The current package is
 modeled after spacyr, but with speed, out-of-the-box experience and
 “enough” accuracy. Similar to spacyr, all output formats are
@@ -25,7 +25,7 @@ modeled after spacyr, but with speed, out-of-the-box experience and
 Caveats:
 
   - At the moment `compromiser` does POS tagging only
-  - English only.
+  - English only
   - It won’t keep punctuations
   - It is only accurate enough for most applications. Don’t expect
     state-of-the-art performance.
@@ -63,7 +63,7 @@ x
 #> n. tokens: 87
 ```
 
-It gets the job done. Some tricky word are tagged incorrectly, though.
+It gets the job done. Some tricky words are tagged incorrectly, though.
 (e.g. breeds, mine)
 
 ``` r
