@@ -28,6 +28,7 @@ tag <- function(x) {
 ## dealing with one pos, e.g. x$pos[[1]]
 .pos_res_to_df <- function(x, doc_id) {
     res <- purrr::map2_dfr(.x = x$terms, .y = seq_along(x$terms), .f = .conv)
+    colnames(res)[which(colnames(res) == "text")] <- "token"
     res$doc_id <- doc_id
     return(dplyr::relocate(res, "doc_id"))
 }

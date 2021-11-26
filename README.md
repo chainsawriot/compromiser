@@ -68,7 +68,7 @@ It gets the job done. Some tricky words are tagged incorrectly, though.
 
 ``` r
 as.data.frame(x)
-#>    doc_id sent_id          text penn                               tags
+#>    doc_id sent_id         token penn                               tags
 #> 1   text1       1           The  WDT                         Determiner
 #> 2   text1       1           dog   NN                     Noun, Singular
 #> 3   text1       1           has   VB                    Verb, Auxiliary
