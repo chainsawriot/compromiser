@@ -90,5 +90,19 @@ tokens_select(x_toks, pattern = c("*/N*", "*/JJ"))
 
 # Integration with tidytext
 
-I don't care.
+I don't care. But probably the `as.data.frame` method is sufficient.
 
+# A more serious example
+
+`data_corpus_inaugural` is a corpus of all US inaugural speeches.
+
+```{r}
+system.time(inaug <- tag(data_corpus_inaugural))
+inaug
+```
+
+It took < 15 seconds to do POS tagging of 138054 tokens. With that and using quanteda, we can study what are the most frequent nouns.
+
+```{r}
+inaug %>% as.tokens %>% tokens_select(pattern = c("*/NN*")) %>% dfm %>% topfeatures(n = 30)
+```
